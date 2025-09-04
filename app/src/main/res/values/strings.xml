@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Gerenciador de Financas</string>
+    <string name="tituloApp">Gerenciador de Finanças</string>
+    <string name="btnLogin">Login</string>
+    <string name="btnCadastro">Cadastrar</string>
+    <string name="btnOffline">Entrar sem uma conta</string>
+    <string name="btnVoltar">Voltar</string>
+
+    <!--Hints-->
+    <string name="hintNome">Nome:</string>
+    <string name="hintEmail">Email:</string>
+    <string name="hintSenha">Senha:</string>
+
+</resources>
