@@ -11,4 +11,7 @@
     <string name="hintEmail">Email:</string>
     <string name="hintSenha">Senha:</string>
 
+    <!--Principal-->
+    <string name="btnVisuFinancas">Visualiza Finanças</string>
+
 </resources>

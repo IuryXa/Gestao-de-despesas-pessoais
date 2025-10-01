@@ -2,7 +2,9 @@ package com.example.gerenciadordefinancas;
 
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
@@ -24,6 +26,12 @@ public class Principal extends AppCompatActivity {
         setContentView(R.layout.activity_principal);
 
         Usuario usuario = new Usuario("","","");
+
+        Button btnVisuFinan = findViewById(R.id.btnFinancas);
+
+        btnVisuFinan.setOnClickListener(view -> {
+            Intent intent = new Intent(this, )
+        });
 
         EditText valorInvestimentoText = findViewById(R.id.valorInvestimento);
         EditText nomeInvestimentoText = findViewById(R.id.nomeInvestimento);
