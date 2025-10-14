@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.gerenciadordefinancas'
+    namespace 'com.example.gerenciadorfinancas'
     compileSdk 36
 
     defaultConfig {
-        applicationId "com.example.gerenciadordefinancas"
+        applicationId "com.example.gerenciadorfinancas"
         minSdk 24
         targetSdk 36
         versionCode 1

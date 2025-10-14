@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,18 +10,21 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.GerenciadorDeFinancas">
+        android:theme="@style/Theme.GerenciadorFinancas">
         <activity
-            android:name=".Financas"
+            android:name=".Investimentos"
             android:exported="false" />
         <activity
-            android:name=".Principal"
+            android:name=".InserirFinanca"
             android:exported="false" />
         <activity
-            android:name=".Cadastro"
+            android:name=".Saldo"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".Home"
+            android:exported="false" />
+        <activity
+            android:name=".OfflineInformacoes"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

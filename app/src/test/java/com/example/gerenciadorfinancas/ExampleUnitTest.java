@@ -1,4 +1,4 @@
-package com.example.gerenciadordefinancas;
+package com.example.gerenciadorfinancas;
 
 import org.junit.Test;
 
