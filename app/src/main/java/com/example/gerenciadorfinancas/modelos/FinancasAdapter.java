@@ -2,6 +2,7 @@
 package com.example.gerenciadorfinancas.modelos;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,12 @@ public class FinancasAdapter extends ArrayAdapter<Financas> {
         TextView nomeTextView = convertView.findViewById(R.id.financa_nome);
         TextView categoriaTextView = convertView.findViewById(R.id.financa_categoria);
         TextView valorTextView = convertView.findViewById(R.id.financa_valor);
+
+        if (financa.getTipo() == 0){
+            valorTextView.setTextColor(Color.GREEN);
+        } else if (financa.getTipo() == 1) {
+            valorTextView.setTextColor(Color.RED);
+        }
 
         nomeTextView.setText(financa.getNome());
         categoriaTextView.setText(financa.getCategoria());

@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GerenciadorFinancas">
         <activity
+            android:name=".DetalhesFinanca"
+            android:exported="false" />
+        <activity
             android:name=".Investimentos"
             android:exported="false" />
         <activity

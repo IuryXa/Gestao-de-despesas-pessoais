@@ -42,6 +42,23 @@
         app:layout_constraintVertical_bias="0.271" />
 
     <EditText
+        android:id="@+id/editDataFinanca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:fontFamily="sans-serif-medium"
+        android:hint=""
+        android:inputType="text"
+        android:text=""
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.371" />
+
+    <EditText
         android:id="@+id/editCategoriaFinanca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -56,7 +73,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.431" />
+        app:layout_constraintVertical_bias="0.471" />
 
     <EditText
         android:id="@+id/editValorFinanca"
@@ -73,7 +90,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.593" />
+        app:layout_constraintVertical_bias="0.571" />
 
     <Button
         android:id="@+id/btnSalvarFinanca"
@@ -90,5 +107,5 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.746" />
+        app:layout_constraintVertical_bias="0.846" />
 </androidx.constraintlayout.widget.ConstraintLayout>

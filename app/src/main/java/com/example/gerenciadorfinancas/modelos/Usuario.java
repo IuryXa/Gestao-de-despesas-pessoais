@@ -23,6 +23,13 @@ public class Usuario implements Serializable {
         }
     }
 
+    public void exluirFinanca(int index){
+        this.financas.remove(index);
+        for(int i = index; i< financas.size();i++){
+            financas.get(i).setId(financas.get(i).getId() - 1);
+        }
+    }
+
     public Financas getFinanca(int index){
         return this.financas.get(index);
     }

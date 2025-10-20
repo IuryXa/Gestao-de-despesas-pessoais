@@ -1,6 +1,7 @@
 package com.example.gerenciadorfinancas;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -32,6 +33,13 @@ public class Home extends AppCompatActivity {
         titulo.setText("Olá, "+ usuario.getNome());
 
         TextView saldo = findViewById(R.id.textSaldoAtual);
+
+        if (usuario.getSaldoAtual() <0){
+            saldo.setTextColor(Color.RED);
+        } else if (usuario.getSaldoAtual() >0) {
+            saldo.setTextColor(Color.GREEN);
+        }
+
         saldo.setText("R$"+usuario.getSaldoAtual());
 
         ConstraintLayout saldoCard = findViewById(R.id.cardSaldo);

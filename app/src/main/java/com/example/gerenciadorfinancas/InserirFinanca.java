@@ -15,6 +15,9 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.gerenciadorfinancas.modelos.Financas;
 import com.example.gerenciadorfinancas.modelos.Usuario;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class InserirFinanca extends AppCompatActivity {
 
     @Override
@@ -30,9 +33,14 @@ public class InserirFinanca extends AppCompatActivity {
         EditText nomeFinanca = findViewById(R.id.editNomeFinanca);
         EditText categoriaFinanca = findViewById(R.id.editCategoriaFinanca);
         EditText valorFinanca = findViewById(R.id.editValorFinanca);
+        EditText dataFinanca = findViewById(R.id.editDataFinanca);
         Button btnSalver = findViewById(R.id.btnSalvarFinanca);
 
-        if (getIntent().getExtras().get("tipo") == "ganho")
+        String tipo = getIntent().getExtras().get("tipo").toString();
+
+        dataFinanca.setText(getTodayDate());
+
+        if (tipo.equals("ganho"))
         {
             titulo.setText("Insira o ganho desejado");
             nomeFinanca.setHint("Digite o nome do ganho:");
@@ -42,8 +50,9 @@ public class InserirFinanca extends AppCompatActivity {
                 String nome = nomeFinanca.getText().toString();
                 String categoria = categoriaFinanca.getText().toString();
                 float valor = Float.parseFloat(valorFinanca.getText().toString());
+                String data = dataFinanca.getText().toString();
 
-                Financas financa = new Financas(nome, categoria,valor, 0);
+                Financas financa = new Financas(nome, categoria,valor, 0, data);
                 usuario.setFinanca(financa);
 
                 Intent intent2 = new Intent(this, Home.class);
@@ -63,8 +72,9 @@ public class InserirFinanca extends AppCompatActivity {
                 String nome = nomeFinanca.getText().toString();
                 String categoria = categoriaFinanca.getText().toString();
                 float valor = Float.parseFloat(valorFinanca.getText().toString());
+                String data = dataFinanca.getText().toString();
 
-                Financas financa = new Financas(nome, categoria, valor, 1);
+                Financas financa = new Financas(nome, categoria, valor, 1, data);
                 usuario.setFinanca(financa);
                 Intent intent2 = new Intent(this, Home.class);
                 Bundle bundle2 = new Bundle();
@@ -82,5 +92,16 @@ public class InserirFinanca extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    public String getTodayDate() {
+        // Get current date
+        Calendar calendar = Calendar.getInstance();
+
+        // Format it to "dd/MM/yyyy"
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String formattedDate = dateFormat.format(calendar.getTime());
+
+        return formattedDate;
     }
 }
