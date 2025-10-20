@@ -1,65 +1,15 @@
-pipeline {
-    agent any
+FROM gradle:7.4.2-jdk11 as builder
 
-    environment {
-        DOCKER_IMAGE = 'meuapp/financas:latest'
-    }
+WORKDIR /usr/src/app
 
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-        stage('Build') {
-            steps {
-                script {
-                    sh './gradlew clean assembleRelease'
-                }
-            }
-        }
-        stage('Test') {
-            steps {
-                script {
-                    sh './gradlew test'
-                }
-            }
-        }
-        stage('Docker Build') {
-            steps {
-                script {
-                    sh 'docker build -t $DOCKER_IMAGE .'
-                }
-            }
-        }
-        stage('Push Docker Image') {
-            steps {
-                script {
-                    withCredentials([usernamePassword(credentialsId: 'docker-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                        sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
-                        sh 'docker push $DOCKER_IMAGE'
-                    }
-                }
-            }
-        }
-        stage('Deploy to Kubernetes') {
-            steps {
-                script {
-                    sh 'kubectl apply -f k8s/deployment.yaml'
-                }
-            }
-        }
-    }
+COPY . .
 
-    post {
-        always {
-            junit '**/build/test-*.xml'
-        }
-        success {
-            echo 'Build and deployment completed successfully!'
-        }
-        failure {
-            echo 'Build or deployment failed!'
-        }
-    }
-}
+RUN gradle clean assembleRelease
+
+FROM openjdk:11-jre-slim
+
+WORKDIR /usr/src/app
+
+COPY --from=builder /usr/src/app/app/build/outputs/apk/release/app-release.apk .
+
+CMD ["java", "-jar", "app-release.apk"]
