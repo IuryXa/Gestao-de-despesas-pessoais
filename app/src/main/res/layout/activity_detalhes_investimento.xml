@@ -12,10 +12,10 @@
     <!-- CardView containing Type, Value, Date -->
 
     <TextView
-        android:id="@+id/textNomeFinancaDF"
+        android:id="@+id/textNomeDI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nome da Finança"
+        android:text="Nome do Investimento"
         android:textColor="#333333"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -26,7 +26,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.115" />
 
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/lineChart"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.251" />
+
     <!-- Erase Button at the bottom -->
+
+    <!-- Tomato red color -->
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -39,11 +54,11 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.381">
+        app:layout_constraintVertical_bias="0.606">
 
         <!-- Type TextView -->
         <TextView
-            android:id="@+id/textTipoDF"
+            android:id="@+id/textTipoDI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Type: Food"
@@ -53,7 +68,7 @@
 
         <!-- Value TextView -->
         <TextView
-            android:id="@+id/textValorDF"
+            android:id="@+id/textValorDI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Value: $45.00"
@@ -63,7 +78,7 @@
 
         <!-- Date TextView -->
         <TextView
-            android:id="@+id/textDataDF"
+            android:id="@+id/textDataDI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Date: 2025-10-19"
@@ -71,9 +86,10 @@
             android:textColor="#333333"
             android:textSize="18sp" />
 
-    </LinearLayout> <!-- Tomato red color -->
+    </LinearLayout>
+
     <Button
-        android:id="@+id/btnVoltarDetalheFinanca"
+        android:id="@+id/btnVoltarDetalheInvestimento"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -86,13 +102,32 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.939" />
+
+    <Button
+        android:id="@+id/btnAdicionarNovoValorDI"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="@color/black"
+        android:fontFamily="sans-serif-medium"
+        android:text="Adicionar Novo Valor"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.875" />
+        app:layout_constraintVertical_bias="0.726" />
 
     <Button
-        android:id="@+id/btnExcluirFinancaDF"
+        android:id="@+id/btnExcluirInvestimentoDI"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -108,5 +143,5 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.748" />
+        app:layout_constraintVertical_bias="0.834" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class Financas implements Serializable {
 
@@ -28,7 +29,7 @@ public class Financas implements Serializable {
     public String getMes(){
         try {
             // Define the date format (dd/MM/yyyy)
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 
             // Parse the input string into a Date object
             Date date = dateFormat.parse(this.data);
@@ -58,7 +59,7 @@ public class Financas implements Serializable {
     public String getAno(){
         try {
             // Define the date format (dd/MM/yyyy)
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 
             // Parse the input string into a Date object
             Date date = dateFormat.parse(this.data);

@@ -17,6 +17,7 @@ import com.example.gerenciadorfinancas.modelos.Usuario;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class InserirFinanca extends AppCompatActivity {
 
@@ -99,7 +100,7 @@ public class InserirFinanca extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
 
         // Format it to "dd/MM/yyyy"
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         String formattedDate = dateFormat.format(calendar.getTime());
 
         return formattedDate;

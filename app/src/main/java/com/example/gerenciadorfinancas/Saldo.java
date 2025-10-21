@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class Saldo extends AppCompatActivity {
 
@@ -46,6 +47,14 @@ public class Saldo extends AppCompatActivity {
 
         String anoEscolhido = editAno.getText().toString();
         String mesEscolhido = editMes.getText().toString();
+        Toast.makeText(this, anoEscolhido+"&"+mesEscolhido, Toast.LENGTH_SHORT).show();
+
+
+        String hoje = getTodayDate();
+
+        saldoAtual.setText("R$"+usuario.getSaldoAtual());
+        editAno.setText(getAno(hoje));
+        editMes.setText(getMes(hoje));
         List<Financas> financas= usuario.getFinancas();
         List<Financas> financasEscolhidas = new ArrayList<>();
 
@@ -56,12 +65,6 @@ public class Saldo extends AppCompatActivity {
                 financasEscolhidas.add(financas.get(i));
             }
         }
-
-        String hoje = getTodayDate();
-
-        saldoAtual.setText("R$"+usuario.getSaldoAtual());
-        editAno.setText(getAno(hoje));
-        editMes.setText(getMes(hoje));
 
 // Create an adapter for the ListView
         FinancasAdapter adapter = new FinancasAdapter(this, financasEscolhidas);
@@ -83,28 +86,41 @@ public class Saldo extends AppCompatActivity {
             }
         });
 
-        btnMudarData.setOnClickListener(view->{
+        btnMudarData.setOnClickListener(view -> {
             try {
                 String anoEscolhido2 = editAno.getText().toString();
                 String mesEscolhido2 = editMes.getText().toString();
-                List<Financas> financasEscolhidas2 = new ArrayList<>();
 
-                for (int i = 0; i<financas.size();i++){
-                    String anoFinanca = financas.get(i).getAno();
-                    String mesFinanca = financas.get(i).getMes();
-                    if (anoFinanca.equals(anoEscolhido2) && mesFinanca.equals(mesEscolhido2)){
-                        financasEscolhidas2.add(financas.get(i));
+                if (anoEscolhido2.isEmpty() || mesEscolhido2.isEmpty()) {
+                    Toast.makeText(Saldo.this, "Por favor, insira ano e mês", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                List<Financas> financasEscolhidas2 = new ArrayList<>();
+                for (Financas financa : financas) {
+                    String anoFinanca = financa.getAno();
+                    String mesFinanca = financa.getMes();
+                    if (anoFinanca.equals(anoEscolhido2) && mesFinanca.equals(mesEscolhido2)) {
+                        financasEscolhidas2.add(financa);
                     }
                 }
-                FinancasAdapter adapter2 = new FinancasAdapter(this, financasEscolhidas);
+
+                FinancasAdapter adapter2 = new FinancasAdapter(Saldo.this, financasEscolhidas2);
                 listFinancas.setAdapter(adapter2);
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
+                Toast.makeText(Saldo.this, "Erro ao filtrar finanças", Toast.LENGTH_SHORT).show();
             }
         });
 
+
         btnVoltar.setOnClickListener(view->{
             //Expandir
+            Bundle bundle2 = new Bundle();
+            bundle2.putSerializable("usuario", usuario);
+            Intent intent1 = new Intent(this, Home.class);
+            intent1.putExtra("dados", bundle2);
+            startActivity(intent1);
             finish();
         });
 
@@ -120,7 +136,7 @@ public class Saldo extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
 
         // Format it to "dd/MM/yyyy"
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         String formattedDate = dateFormat.format(calendar.getTime());
 
         return formattedDate;
@@ -129,7 +145,7 @@ public class Saldo extends AppCompatActivity {
     public String getMes(String data){
         try {
             // Define the date format (dd/MM/yyyy)
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 
             // Parse the input string into a Date object
             Date date = dateFormat.parse(data);
@@ -159,7 +175,7 @@ public class Saldo extends AppCompatActivity {
     public String getAno(String data){
         try {
             // Define the date format (dd/MM/yyyy)
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 
             // Parse the input string into a Date object
             Date date = dateFormat.parse(data);

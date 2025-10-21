@@ -8,10 +8,29 @@ public class Usuario implements Serializable {
     private String nome;
     private float saldoAtual;
     private List<Financas> financas;
+    private List<Investimento> investimentos;
+
+    public List<Investimento> getInvestimentos() {
+        return investimentos;
+    }
+
+    public void setInvestimentos(List<Investimento> investimentos) {
+        this.investimentos = investimentos;
+    }
 
     public Usuario(){
         this.financas = new ArrayList<>();
+        this.investimentos = new ArrayList<>();
         this.saldoAtual = 0;
+    }
+
+    public void setInvestimento(Investimento investimento){
+        this.investimentos.add(investimento);
+
+    }
+
+    public Investimento getInvestimento(int index){
+        return this.investimentos.get(index);
     }
 
     public void setFinanca(Financas financa){
@@ -24,10 +43,18 @@ public class Usuario implements Serializable {
     }
 
     public void exluirFinanca(int index){
+
+        if (financas.get(index).getTipo() == 0){
+            saldoAtual -= financas.get(index).getValor();
+        } else if (financas.get(index).getTipo() == 1) {
+            saldoAtual += financas.get(index).getValor();
+        }
+
         this.financas.remove(index);
         for(int i = index; i< financas.size();i++){
             financas.get(i).setId(financas.get(i).getId() - 1);
         }
+
     }
 
     public Financas getFinanca(int index){
