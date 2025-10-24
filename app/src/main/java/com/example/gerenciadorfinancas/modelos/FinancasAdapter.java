@@ -43,9 +43,9 @@ public class FinancasAdapter extends ArrayAdapter<Financas> {
             valorTextView.setTextColor(Color.RED);
         }
 
-        nomeTextView.setText(financa.getNome());
-        categoriaTextView.setText(financa.getCategoria());
-        valorTextView.setText("R$ " + financa.getValor());
+        nomeTextView.setText("Nome: "+financa.getNome());
+        categoriaTextView.setText("Categoria: "+financa.getCategoria());
+        valorTextView.setText("Valor: R$ " + financa.getValor());
 
         return convertView;
     }

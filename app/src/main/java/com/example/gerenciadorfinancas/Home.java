@@ -44,8 +44,8 @@ public class Home extends AppCompatActivity {
 
         ConstraintLayout saldoCard = findViewById(R.id.cardSaldo);
         ConstraintLayout investimentoCard = findViewById(R.id.cardInvestimento);
-        Button btnAdicionarGanho = findViewById(R.id.btnGanhoHome);
-        Button btnAdicionarDespesa = findViewById(R.id.btnDespesaHome);
+        ConstraintLayout btnAdicionarGanho = findViewById(R.id.btnGanhoHome);
+        ConstraintLayout btnAdicionarDespesa = findViewById(R.id.btnDespesaHome);
 
         btnAdicionarGanho.setOnClickListener(view->{
             Intent intent2 = new Intent(this, InserirFinanca.class);

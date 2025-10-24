@@ -18,7 +18,15 @@ import com.example.gerenciadorfinancas.modelos.Financas;
 import com.example.gerenciadorfinancas.modelos.FinancasAdapter;
 import com.example.gerenciadorfinancas.modelos.Investimento;
 import com.example.gerenciadorfinancas.modelos.InvestimentoAdapter;
+import com.example.gerenciadorfinancas.modelos.MiniInvestimento;
 import com.example.gerenciadorfinancas.modelos.Usuario;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -29,6 +37,8 @@ import java.util.Locale;
 
 public class Investimentos extends AppCompatActivity {
 
+    private LineChart lineChartGeral;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +47,9 @@ public class Investimentos extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras().getBundle("dados");
         Usuario usuario = (Usuario) bundle.getSerializable("usuario");
+        // Initialize the LineChart
+        lineChartGeral = findViewById(R.id.lineChartGeral);
+
         ListView listInvestimento = findViewById(R.id.listInvestimentos);
         EditText ano = findViewById(R.id.editAnoInves);
         EditText mes = findViewById(R.id.editMesInves);
@@ -44,6 +57,9 @@ public class Investimentos extends AppCompatActivity {
 
         List<Investimento> investimentos= usuario.getInvestimentos();
         List<Investimento> investimentosEscolhidos = new ArrayList<>();
+        String hoje = getTodayDate();
+        ano.setText(getAno(hoje));
+        mes.setText(getMes(hoje));
         String anoEscolhido = ano.getText().toString();
         String mesEscolhido = mes.getText().toString();
 
@@ -59,9 +75,7 @@ public class Investimentos extends AppCompatActivity {
         Button btnAdicionarInvestimento = findViewById(R.id.btnAduicionarInves);
         InvestimentoAdapter adapter = new InvestimentoAdapter(this, usuario.getInvestimentos());
         listInvestimento.setAdapter(adapter);
-        String hoje = getTodayDate();
-        ano.setText(getAno(hoje));
-        mes.setText(getMes(hoje));
+        setChartData(investimentosEscolhidos);
 
         btnMudarData.setOnClickListener(view->{
             try {
@@ -78,6 +92,7 @@ public class Investimentos extends AppCompatActivity {
                 }
                 InvestimentoAdapter adapter2 = new InvestimentoAdapter(this, investimentosEscolhidos2);
                 listInvestimento.setAdapter(adapter2);
+                setChartData(investimentosEscolhidos2);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -187,5 +202,46 @@ public class Investimentos extends AppCompatActivity {
             e.printStackTrace();
             return "";
         }
+    }
+    private void setChartData(List<Investimento> investimentos) {
+        List<Entry> allEntries = new ArrayList<>();
+        List<String> dates = new ArrayList<>();
+        int index = 0;
+
+        // Loop through all investments and get the data points
+        for (Investimento investimento : investimentos) {
+            List<MiniInvestimento> valores = investimento.getValores();
+            for (MiniInvestimento valor : valores) {
+                allEntries.add(new Entry(index++, valor.getValor()));
+                dates.add(valor.getData());
+            }
+        }
+
+        // Create a dataset for the LineChart
+        LineDataSet dataSet = new LineDataSet(allEntries, "Investment Overview");
+        dataSet.setColor(getResources().getColor(R.color.blue)); // Set the line color
+        dataSet.setValueTextColor(getResources().getColor(R.color.black)); // Set value text color
+        dataSet.setValueTextSize(10f); // Set value text size
+
+        // Create the line data
+        LineData lineData = new LineData(dataSet);
+
+        // Set the LineChart data
+        lineChartGeral.setData(lineData);
+
+        // Set up the X Axis
+        XAxis xAxis = lineChartGeral.getXAxis();
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(dates)); // Use dates as x-axis labels
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setGranularity(1f);
+        xAxis.setGranularityEnabled(true);
+
+        // Set up the Y Axis
+        YAxis leftAxis = lineChartGeral.getAxisLeft();
+        leftAxis.setGranularity(10f);
+        lineChartGeral.getAxisRight().setEnabled(false); // Disable the right axis
+
+        // Refresh the chart
+        lineChartGeral.invalidate();
     }
 }

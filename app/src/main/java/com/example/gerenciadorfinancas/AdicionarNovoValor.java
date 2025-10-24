@@ -30,6 +30,7 @@ public class AdicionarNovoValor extends AppCompatActivity {
         EditText valor = findViewById(R.id.editValorNovoAdd);
         EditText data = findViewById(R.id.editDataNovoAdd);
         Button btnAdiconarValor = findViewById(R.id.btnAdicionarNovoValorDIAdd);
+        Button btnVoltar = findViewById(R.id.btnVoltarNovoValorDIAdd);
 
         titulo.setText(usuario.getInvestimento(index).getNome());
         data.setText(usuario.getInvestimento(index).getTodayDate());
@@ -37,6 +38,16 @@ public class AdicionarNovoValor extends AppCompatActivity {
         btnAdiconarValor.setOnClickListener(view->{
             float valorAtual = Float.parseFloat(valor.getText().toString());
             usuario.getInvestimento(index).setValorAtual(valorAtual);
+            Bundle bundle1 = new Bundle();
+            bundle1.putSerializable("usuario", usuario);
+            Intent intent = new Intent(this, DetalhesInvestimento.class);
+            intent.putExtra("dados", bundle1);
+            intent.putExtra("investimento", index);
+            startActivity(intent);
+            finish();
+        });
+
+        btnVoltar.setOnClickListener(view->{
             Bundle bundle1 = new Bundle();
             bundle1.putSerializable("usuario", usuario);
             Intent intent = new Intent(this, DetalhesInvestimento.class);

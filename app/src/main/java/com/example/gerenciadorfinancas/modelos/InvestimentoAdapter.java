@@ -36,10 +36,10 @@ public class InvestimentoAdapter extends ArrayAdapter<Investimento> {
             porcentagemInvestimento.setTextColor(Color.GREEN);
         }
 
-        nomeInvestimento.setText(investimento.getNome());
-        categoriaInvestimento.setText(investimento.getCategoria());
-        valorInvestimento.setText("R$"+investimento.getValorAtual());
-        porcentagemInvestimento.setText(investimento.getValores().get(investimento.getValores().size() -1).getPorcentagem()+"%");
+        nomeInvestimento.setText("Nome: "+investimento.getNome());
+        categoriaInvestimento.setText("Categoria: "+investimento.getCategoria());
+        valorInvestimento.setText("Valor Atual: R$"+investimento.getValorAtual());
+        porcentagemInvestimento.setText("Variação: "+investimento.getValores().get(investimento.getValores().size() -1).getPorcentagem()+"%");
 
         return convertView;
     }

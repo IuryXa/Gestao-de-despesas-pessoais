@@ -49,14 +49,14 @@ public class DetalhesInvestimento extends AppCompatActivity {
         TextView categoria = findViewById(R.id.textTipoDI);
         TextView valorAtual = findViewById(R.id.textValorDI);
         TextView dataUltima = findViewById(R.id.textDataDI);
-        Button btnExcluir = findViewById(R.id.btnExcluirInvestimentoDI);
+//        Button btnExcluir = findViewById(R.id.btnExcluirInvestimentoDI);
         Button btnVoltar = findViewById(R.id.btnVoltarDetalheInvestimento);
         Button btnAdicionarValor = findViewById(R.id.btnAdicionarNovoValorDI);
 
         nome.setText(investimento.getNome());
-        categoria.setText(investimento.getCategoria());
-        valorAtual.setText(""+investimento.getValorAtual());
-        dataUltima.setText(investimento.getValores().get(investimento.getValores().size()-1).getData());
+        categoria.setText("Categoria: " + investimento.getCategoria());
+        valorAtual.setText("Valor Atual: "+investimento.getValorAtual());
+        dataUltima.setText("Ultima Atualização: "+investimento.getValores().get(investimento.getValores().size()-1).getData());
 
         btnAdicionarValor.setOnClickListener(view->{
             Bundle bundle1 = new Bundle();

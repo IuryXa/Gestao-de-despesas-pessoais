@@ -30,26 +30,26 @@ public class DetalhesFinanca extends AppCompatActivity {
         TextView tipoFinanca = findViewById(R.id.textTipoDF);
         TextView dataFinanca = findViewById(R.id.textDataDF);
         TextView valorFinanca = findViewById(R.id.textValorDF);
-        Button btnExcluir = findViewById(R.id.btnExcluirFinancaDF);
+//        Button btnExcluir = findViewById(R.id.btnExcluirFinancaDF);
         Button btnvoltar = findViewById(R.id.btnVoltarDetalheFinanca);
 
         Financas financaAtual = usuario.getFinanca(tipo);
 
         nomeFinanca.setText(financaAtual.getNome());
-        tipoFinanca.setText(financaAtual.getCategoria());
-        dataFinanca.setText(financaAtual.getData());
-        valorFinanca.setText(""+financaAtual.getValor());
+        tipoFinanca.setText("Categoria: "+financaAtual.getCategoria());
+        dataFinanca.setText("Data: "+financaAtual.getData());
+        valorFinanca.setText("Valor: "+financaAtual.getValor());
 
         Intent intent = new Intent(this, Saldo.class);
         Bundle bundle1 = new Bundle();
 
-        btnExcluir.setOnClickListener(view->{
-            usuario.exluirFinanca(financaAtual.getId());
-            bundle1.putSerializable("usuario", usuario);
-            intent.putExtra("dados", bundle1);
-            startActivity(intent);
-            finish();
-        });
+//        btnExcluir.setOnClickListener(view->{
+//            usuario.exluirFinanca(financaAtual.getId());
+//            bundle1.putSerializable("usuario", usuario);
+//            intent.putExtra("dados", bundle1);
+//            startActivity(intent);
+//            finish();
+//        });
 
         btnvoltar.setOnClickListener(view->{
             bundle1.putSerializable("usuario", usuario);

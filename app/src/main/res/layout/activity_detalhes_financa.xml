@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetalhesFinanca">
+    tools:context=".DetalhesFinanca"
+    android:background="#242424">
 
     <!-- Title at the top -->
 
@@ -16,9 +17,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nome da Finança"
-        android:textColor="#333333"
-        android:textSize="24sp"
+        android:fontFamily="sans-serif-medium"
         android:textStyle="bold"
+        android:textSize="30sp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -47,9 +49,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Type: Food"
+            android:fontFamily="sans-serif-medium"
+            android:textStyle="bold"
             android:textAlignment="center"
-            android:textColor="#333333"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textColor="@color/white" />
 
         <!-- Value TextView -->
         <TextView
@@ -57,9 +61,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Value: $45.00"
+            android:fontFamily="sans-serif-medium"
+            android:textStyle="bold"
             android:textAlignment="center"
-            android:textColor="#333333"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textColor="@color/white" />
 
         <!-- Date TextView -->
         <TextView
@@ -67,9 +73,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Date: 2025-10-19"
+            android:fontFamily="sans-serif-medium"
+            android:textStyle="bold"
             android:textAlignment="center"
-            android:textColor="#333333"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textColor="@color/white"/>
 
     </LinearLayout> <!-- Tomato red color -->
     <Button
@@ -91,22 +99,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.875" />
 
-    <Button
-        android:id="@+id/btnExcluirFinancaDF"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:backgroundTint="#ff0000"
-        android:fontFamily="sans-serif-medium"
-        android:text="Excluir"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.748" />
 </androidx.constraintlayout.widget.ConstraintLayout>

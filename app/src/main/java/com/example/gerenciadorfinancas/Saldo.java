@@ -45,16 +45,15 @@ public class Saldo extends AppCompatActivity {
         Button btnVoltar = findViewById(R.id.btnVoltarSaldo);
         Button btnMudarData = findViewById(R.id.btnMudarData);
 
-        String anoEscolhido = editAno.getText().toString();
-        String mesEscolhido = editMes.getText().toString();
-        Toast.makeText(this, anoEscolhido+"&"+mesEscolhido, Toast.LENGTH_SHORT).show();
-
-
         String hoje = getTodayDate();
-
-        saldoAtual.setText("R$"+usuario.getSaldoAtual());
         editAno.setText(getAno(hoje));
         editMes.setText(getMes(hoje));
+
+        String anoEscolhido = editAno.getText().toString();
+        String mesEscolhido = editMes.getText().toString();
+
+        saldoAtual.setText("R$"+usuario.getSaldoAtual());
+
         List<Financas> financas= usuario.getFinancas();
         List<Financas> financasEscolhidas = new ArrayList<>();
 

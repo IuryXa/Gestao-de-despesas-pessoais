@@ -18,8 +18,6 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        Button btnLogin = findViewById(R.id.btnLogin);
-        Button btnCadastro = findViewById(R.id.btnCadastro);
         Button btnOffline = findViewById(R.id.btnOffline);
 
         btnOffline.setOnClickListener(view->{

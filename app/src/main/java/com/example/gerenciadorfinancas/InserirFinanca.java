@@ -36,6 +36,7 @@ public class InserirFinanca extends AppCompatActivity {
         EditText valorFinanca = findViewById(R.id.editValorFinanca);
         EditText dataFinanca = findViewById(R.id.editDataFinanca);
         Button btnSalver = findViewById(R.id.btnSalvarFinanca);
+        Button btnVoltar = findViewById(R.id.btnVoltarFinanca);
 
         String tipo = getIntent().getExtras().get("tipo").toString();
 
@@ -86,7 +87,14 @@ public class InserirFinanca extends AppCompatActivity {
             });
         }
 
-
+        btnVoltar.setOnClickListener(view->{
+            Intent intent2 = new Intent(this, Home.class);
+            Bundle bundle2 = new Bundle();
+            bundle2.putSerializable("usuario", usuario);
+            intent2.putExtra("dados", bundle2);
+            startActivity(intent2);
+            finish();
+        });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

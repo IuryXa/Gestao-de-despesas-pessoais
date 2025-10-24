@@ -35,6 +35,7 @@ public class AdicionarInvestimento extends AppCompatActivity {
         EditText categoriaInvestimento = findViewById(R.id.editCategoriaInvestimento);
         EditText valorInvestimento = findViewById(R.id.editValorInvestimento);
         Button btnAdicionarInvestimento = findViewById(R.id.btnSalvarInvestimento);
+        Button btnVoltarInvestimento = findViewById(R.id.btnVoltarInvestimento);
 
         dataInvestimento.setText(getTodayDate());
 
@@ -46,6 +47,14 @@ public class AdicionarInvestimento extends AppCompatActivity {
 
             Investimento investimento = new Investimento(nome,categoria,valor,data);
             usuario.getInvestimentos().add(investimento);
+            Intent intent = new Intent(this, Investimentos.class);
+            Bundle bundle1 = new Bundle();
+            bundle1.putSerializable("usuario", usuario); // Correctly add usuario
+            intent.putExtra("dados", bundle1); // Correctly pass bundle1
+            startActivity(intent);
+        });
+
+        btnVoltarInvestimento.setOnClickListener(view->{
             Intent intent = new Intent(this, Investimentos.class);
             Bundle bundle1 = new Bundle();
             bundle1.putSerializable("usuario", usuario); // Correctly add usuario
