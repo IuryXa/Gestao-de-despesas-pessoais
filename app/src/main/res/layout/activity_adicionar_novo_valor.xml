@@ -71,6 +71,7 @@
         android:background="@drawable/edit_text_background"
         android:ems="10"
         android:hint="Digite o novo valor:"
+        android:inputType="number|numberDecimal|numberSigned"
         android:padding="12dp"
         android:text=""
         android:textAlignment="center"

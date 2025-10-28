@@ -97,6 +97,7 @@
         android:background="@drawable/edit_text_background"
         android:ems="10"
         android:hint="Digite o valor do investimento:"
+        android:inputType="number|numberDecimal"
         android:padding="12dp"
         android:text=""
         android:textAlignment="center"

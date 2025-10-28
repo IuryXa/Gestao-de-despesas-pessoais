@@ -124,7 +124,7 @@ public class Investimentos extends AppCompatActivity {
         btnVoltar.setOnClickListener(view->{
             Intent intent1 = new Intent(this, Home.class);
             bundle1.putSerializable("usuario", usuario);
-            intent.putExtra("dados", bundle1);
+            intent1.putExtra("dados", bundle1);
             startActivity(intent1);
         });
 
